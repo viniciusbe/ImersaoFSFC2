@@ -27,6 +27,10 @@ type PartialRoutesPositions struct {
 	Finished bool      `json:"finished"`
 }
 
+func NewRoute() *Route {
+	return &Route{}
+}
+
 func (r *Route) LoadPositions() error {
 	if r.ID == "" {
 		return errors.New("route id not informed")
@@ -40,7 +44,7 @@ func (r *Route) LoadPositions() error {
 	scanner := bufio.NewScanner(f)
 	for scanner.Scan() {
 		data := strings.Split(scanner.Text(), ",")
-		lat, err := strconv.ParseFloat(data[0], 64)
+		lat, err := strconv.ParseFloat(data[1], 64)
 		if err != nil {
 			return nil
 		}
