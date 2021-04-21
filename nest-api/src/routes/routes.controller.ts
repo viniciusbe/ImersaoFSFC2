@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { RoutesService } from './routes.service';
 import { CreateRouteDto } from './dto/create-route.dto';
 import { UpdateRouteDto } from './dto/update-route.dto';
@@ -30,5 +38,10 @@ export class RoutesController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.routesService.remove(+id);
+  }
+
+  @Get(':id/start')
+  startRoute(@Param('id') id: string) {
+    console.log(id);
   }
 }
